@@ -1,0 +1,168 @@
+ Java Collection Assignment Solution
+
+ Magical Food Festival Management System
+
+
+import java.util.*;
+
+class FoodFestival {
+
+
+    ArrayList<String> foodStalls = new ArrayList<>();
+
+   
+    Vector<String> dishes = new Vector<>();
+
+ 
+    Queue<String> customers = new LinkedList<>();
+
+
+    Stack<String> lastVisitedStalls = new Stack<>();
+
+  
+    LinkedList<String> customerHistory = new LinkedList<>();
+
+  public void addFoodStall(String stall) {
+        foodStalls.add(stall);
+        System.out.println(stall + " added successfully.");
+    }
+
+  
+    public void addDish(String dish) {
+        dishes.add(dish);
+        System.out.println(dish + " added to dishes.");
+    }
+
+
+    public void addCustomer(String customer) {
+        customers.offer(customer);
+        customerHistory.add(customer);
+        System.out.println(customer + " joined the queue.");
+    }
+
+
+    public void serveCustomer() {
+        if (!customers.isEmpty()) {
+            String served = customers.poll();
+            System.out.println(served + " has been served.");
+        } else {
+            System.out.println("No customers in queue.");
+        }
+    }
+
+    public void visitStall(String stall) {
+        lastVisitedStalls.push(stall);
+        System.out.println("Visited Stall: " + stall);
+    }
+
+  
+    public void goBack() {
+        if (!lastVisitedStalls.isEmpty()) {
+            String previous = lastVisitedStalls.pop();
+            System.out.println("Going back from: " + previous);
+        } else {
+            System.out.println("No previous stalls found.");
+        }
+    }
+
+
+    public void showFoodStalls() {
+        System.out.println("\nFood Stalls:");
+        for (String stall : foodStalls) {
+            System.out.println(stall);
+        }
+    }
+
+
+    public void showDishes() {
+        System.out.println("\nAvailable Dishes:");
+        for (String dish : dishes) {
+            System.out.println(dish);
+        }
+    }
+
+
+    public void showCustomerHistory() {
+        System.out.println("\nDaily Customer History:");
+        for (String customer : customerHistory) {
+            System.out.println(customer);
+        }
+    }
+}
+
+public class FestivalManagementSystem {
+    public static void main(String[] args) {
+
+        FoodFestival festival = new FoodFestival();
+
+    
+        festival.addFoodStall("Italian Pizza Stall");
+        festival.addFoodStall("Indian Spice Corner");
+        festival.addFoodStall("Chinese Noodles Hub");
+
+ 
+        festival.addDish("Cheese Pizza");
+        festival.addDish("Paneer Butter Masala");
+        festival.addDish("Hakka Noodles");
+
+  
+        festival.addCustomer("Sneha");
+        festival.addCustomer("Rahul");
+        festival.addCustomer("Anjali");
+
+        
+        festival.serveCustomer();
+        festival.serveCustomer();
+
+       
+        festival.visitStall("Italian Pizza Stall");
+        festival.visitStall("Indian Spice Corner");
+
+      
+        festival.goBack();
+
+      
+        festival.showFoodStalls();
+        festival.showDishes();
+        festival.showCustomerHistory();
+    }
+}
+
+
+
+Sample Output
+
+Italian Pizza Stall added successfully.
+Indian Spice Corner added successfully.
+Chinese Noodles Hub added successfully.
+
+Cheese Pizza added to dishes.
+Paneer Butter Masala added to dishes.
+Hakka Noodles added to dishes.
+
+Sneha joined the queue.
+Rahul joined the queue.
+Anjali joined the queue.
+
+Sneha has been served.
+Rahul has been served.
+
+Visited Stall: Italian Pizza Stall
+Visited Stall: Indian Spice Corner
+Going back from: Indian Spice Corner
+
+Food Stalls:
+Italian Pizza Stall
+Indian Spice Corner
+Chinese Noodles Hub
+
+Available Dishes:
+Cheese Pizza
+Paneer Butter Masala
+Hakka Noodles
+
+Daily Customer History:
+Sneha
+Rahul
+Anjali
+```
